@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nike Store | Just Do It</title>
+  <style>
+    /* RESET & ESTILOS BASE */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #111;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* HEADER & NAVEGAÇÃO */
+    header {
+      background-color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    nav a:hover, nav a.active {
+      color: #707070;
+      border-bottom: 2px solid #111;
+      padding-bottom: 5px;
+    }
+
+    .cart-icon {
+      position: relative;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .cart-count {
+      background-color: #111;
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 50%;
+      margin-left: 5px;
+    }
+
+    /* HERO BANNER */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      max-width: 600px;
+    }
+
+    .btn-hero {
+      background-color: #fff;
+      color: #111;
+      padding: 12px 30px;
+      font-weight: bold;
+      border-radius: 30px;
+      text-transform: uppercase;
+      transition: background-color 0.2s;
+    }
+
+    .btn-hero:hover {
+      background-color: #e5e5e5;
+    }
+
+    /* PRODUTOS SECTION */
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      border-left: 4px solid #111;
+      padding-left: 10px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      background-color: #f0f0f0;
+    }
+
+    .product-info {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-category {
+      font-size: 12px;
+      color: #7e7e7e;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .product-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-size: 18px;
+      font-weight: 800;
+      color: #111;
+      margin-top: auto;
+      margin-bottom: 15px;
+    }
+
+    .btn-add-cart {
+      background-color: #111;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s;
+    }
+
+    .btn-add-cart:hover {
+      background-color: #333;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #111;
+      color: #fff;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .footer-col h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: #7e7e7e;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 30px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #222;
+      font-size: 12px;
+      color: #7e7e7e;
+      text-align: center;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+      .hero h1 {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / MENU -->
+  <header>
+    <div class="header-container">
+      <div class="logo">NIKE</div>
+      <nav>
+        <ul>
+          <li><a onclick="filterCategory('all')" class="nav-btn active">Todos</a></li>
+          <li><a onclick="filterCategory('camisas')" class="nav-btn">Camisas</a></li>
+          <li><a onclick="filterCategory('calcas')" class="nav-btn">Calças</a></li>
+          <li><a onclick="filterCategory('tenis')" class="nav-btn">Tênis</a></li>
+          <li><a onclick="filterCategory('blusas')" class="nav-btn">Blusas</a></li>
+          <li><a onclick="filterCategory('shorts')" class="nav-btn">Shorts</a></li>
+        </ul>
+      </nav>
+      <div class="cart-icon">
+        🛒 Carrinho <span class="cart-count" id="cart-count">0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO BANNER -->
+  <section class="hero">
+    <h1>JUST DO IT</h1>
+    <p>Conheça as últimas novidades e tecnologias para elevar seu desempenho esportivo.</p>
+    <a href="#produtos" class="btn-hero">Ver Coleção</a>
+  </section>
+
+  <!-- LISTA DE PRODUTOS -->
+  <main class="container" id="produtos">
+    <h2 class="section-title" id="category-title">Todos os Produtos</h2>
+    <div class="products-grid" id="products-container">
+      <!-- Os produtos serão gerados via JavaScript -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>Encontre uma Loja</h4>
+        <ul>
+          <li>Cadastre-se para e-mails</li>
+          <li>Cartão de Desconto</li>
+          <li>Enviar Feedback</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ajuda</h4>
+        <ul>
+          <li>Status do Pedido</li>
+          <li>Envio e Entrega</li>
+          <li>Devoluções</li>
+          <li>Opções de Pagamento</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Sobre a Nike</h4>
+        <ul>
+          <li>Notícias</li>
+          <li>Carreiras</li>
+          <li>Investidores</li>
+          <li>Sustentabilidade</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Nike, Inc. Todos os direitos reservados. Projeto Demonstrativo.</p>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // BASE DE DADOS DOS PRODUTOS COM VALORES EM BRL (R$)
+    const products = [
+      // Camisas
+      { id: 1, name: "Camisa Nike Dri-FIT Academy", category: "camisas", price: 129.90, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=500&q=80" },
+      { id: 2, name: "Camisa Nike Pro Sportswear", category: "camisas", price: 159.90, img: "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=500&q=80" },
+      
+      // Calças
+      { id: 3, name: "Calça Jogger Nike Club Fleece", category: "calcas", price: 299.90, img: "https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=500&q=80" },
+      { id: 4, name: "Calça Treino Nike Dri-FIT", category: "calcas", price: 259.90, img: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=500&q=80" },
+
+      // Tênis
+      { id: 5, name: "Tênis Nike Air Force 1 '07", category: "tenis", price: 799.90, img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=500&q=80" },
+      { id: 6, name: "Tênis Nike Air Max 270", category: "tenis", price: 899.90, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80" },
+
+      // Blusas
+      { id: 7, name: "Moletom Nike Sportswear Club Fleece", category: "blusas", price: 349.90, img: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=500&q=80" },
+      { id: 8, name: "Jaqueta Nike Windrunner", category: "blusas", price: 429.90, img: "https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=500&q=80" },
+
+      // Shorts
+      { id: 9, name: "Shorts Nike Flex Stride", category: "shorts", price: 149.90, img: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=500&q=80" },
+      { id: 10, name: "Shorts Nike Sportswear Alumni", category: "shorts", price: 189.90, img: "https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=500&q=80" }
+    ];
+
+    let cartCount = 0;
+
+    // RENDERIZAR PRODUTOS NA TELA
+    function renderProducts(items) {
+      const container = document.getElementById('products-container');
+      container.innerHTML = '';
+
+      items.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <img src="${product.img}" alt="${product.name}" class="product-image">
+          <div class="product-info">
+            <span class="product-category">${product.category}</span>
+            <h3 class="product-title">${product.name}</h3>
+            <div class="product-price">R$ ${product.price.toFixed(2).replace('.', ',')}</div>
+            <button class="btn-add-cart" onclick="addToCart()">Adicionar ao Carrinho</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // FILTRAR POR CATEGORIA
+    function filterCategory(category) {
+      // Atualizar classe ativa no menu
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      // Atualizar Título
+      const title = document.getElementById('category-title');
+      if (category === 'all') {
+        title.innerText = 'Todos os Produtos';
+        renderProducts(products);
+      } else {
+        title.innerText = category.charAt(0).toUpperCase() + category.slice(1);
+        const filtered = products.filter(p => p.category === category);
+        renderProducts(filtered);
+      }
+    }
+
+    // ADICIONAR AO CARRINHO (Apenas contador)
+    function addToCart() {
+      cartCount++;
+      document.getElementById('cart-count').innerText = cartCount;
+    }
+
+    // INICIALIZAR
+    renderProducts(products);
+  </script>
+</body>
+</html>
