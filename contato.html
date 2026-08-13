@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike - Fale Conosco</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">NIKE</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Camisas</a></li>
+                <li><a href="shorts.html">Shorts</a></li>
+                <li><a href="calcas.html">Calças</a></li>
+                <li><a href="blusas.html">Blusas & Tênis</a></li>
+                <li><a href="contato.html" class="active">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Fale Conosco</h1>
+        <p>Estamos aqui para ajudar com suas dúvidas e pedidos.</p>
+    </section>
+
+    <main class="container">
+        <div class="contact-container">
+            <form action="#" method="POST" onsubmit="alert('Mensagem enviada com sucesso!'); return false;">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" required placeholder="Digite seu nome">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required placeholder="seuemail@exemplo.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="assunto">Assunto</label>
+                    <input type="text" id="assunto" required placeholder="Ex: Dúvida sobre pedido">
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" rows="5" required placeholder="Escreva sua mensagem aqui..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Mensagem</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Nike, Inc. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
